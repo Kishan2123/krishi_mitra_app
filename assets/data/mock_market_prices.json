@@ -1,0 +1,6 @@
+{
+  "market_prices": [
+    {"crop": "Wheat", "price": 1500},
+    {"crop": "Rice", "price": 1200}
+  ]
+}

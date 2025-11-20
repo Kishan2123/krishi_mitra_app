@@ -1,0 +1,7 @@
+{
+  "weather": {
+    "temperature": "30°C",
+    "humidity": "70%",
+    "forecast": "Sunny"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    {"crop": "Wheat", "reason": "High yield in current season"},
+    {"crop": "Rice", "reason": "Suitable for soil moisture"}
+  ]
+}
