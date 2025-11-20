@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
-import 'router/app_router.dart';
-import 'theme/app_theme.dart';
+// TODO: fix this import based on where your IndexScreen file actually is.
+import 'screens/index_screen.dart'; 
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class KrishiMitraApp extends StatelessWidget {
+  const KrishiMitraApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
+    return MaterialApp(
       title: 'Krishi Mitra',
-      theme: AppTheme.lightTheme,
-      darkTheme: AppTheme.darkTheme,
-      routerConfig: AppRouter.router,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.green,
+        brightness: Brightness.light,
+      ),
+      home: const IndexScreen(), // first screen of your app
     );
   }
 }
