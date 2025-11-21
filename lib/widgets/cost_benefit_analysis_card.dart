@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CostBenefitAnalysisCard extends StatelessWidget {
-  const CostBenefitAnalysisCard({Key? key}) : super(key: key);
+  const CostBenefitAnalysisCard({super.key});
 
   @override
   Widget build(BuildContext context) {

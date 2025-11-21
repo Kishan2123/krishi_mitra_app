@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UploadPreviewCard extends StatelessWidget {
-  const UploadPreviewCard({Key? key}) : super(key: key);
+  const UploadPreviewCard({super.key});
 
   @override
   Widget build(BuildContext context) {

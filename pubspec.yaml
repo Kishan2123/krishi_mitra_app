@@ -37,6 +37,10 @@ dependencies:
 
   fl_chart: ^0.40.0
   image_picker: ^1.2.1
+  go_router: ^14.2.0
+  flutter_svg: ^2.0.10+1
+  flutter_tts: ^3.8.5
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:
@@ -94,17 +98,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/uploads/
+    - assets/images/weather/
     - assets/data/
     - assets/models/
-    - assets/images/photography/
-    - assets/images/weather/
-    - assets/images/crops/
-    - assets/images/uploads/
-    - assets/images/weather/sunny.svg
-    - assets/images/weather/cloudy.svg
-    - assets/images/weather/rainy.svg
-    - assets/images/weather/storm.svg
-    - assets/images/weather/partly_cloudy.svg
-    - assets/images/weather/drizzle.svg
-    - assets/images/weather/windy.svg
-    - assets/images/weather/fog.svg

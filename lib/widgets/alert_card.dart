@@ -4,7 +4,7 @@ import '../models/alert.dart';
 class AlertCard extends StatelessWidget {
   final Alert alert;
 
-  const AlertCard({Key? key, required this.alert}) : super(key: key);
+  const AlertCard({super.key, required this.alert});
 
   @override
   Widget build(BuildContext context) {
