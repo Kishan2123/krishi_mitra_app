@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+ï»¿import 'package:flutter/material.dart';
 import '../services/preferences_service.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -94,8 +94,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     value: _units,
                     decoration: const InputDecoration(labelText: 'Units'),
                     items: const [
-                      DropdownMenuItem(value: 'Metric', child: Text('Metric (°C, km/h)')),
-                      DropdownMenuItem(value: 'Imperial', child: Text('Imperial (°F, mph)')),
+                      DropdownMenuItem(value: 'Metric', child: Text('Metric (Â°C, km/h)')),
+                      DropdownMenuItem(value: 'Imperial', child: Text('Imperial (Â°F, mph)')),
                     ],
                     onChanged: (value) async {
                       if (value == null) return;

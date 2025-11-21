@@ -57,8 +57,8 @@ class CropStatusCard extends StatelessWidget {
                 Chip(
                   label: Text(health),
                   backgroundColor: _healthColor.withOpacity(0.12),
-                  labelStyle: TextStyle(color: _healthColor.shade700, fontWeight: FontWeight.w600),
-                  avatar: Icon(Icons.eco, color: _healthColor.shade700, size: 18),
+                  labelStyle: TextStyle(color: _healthColor.withOpacity(0.85), fontWeight: FontWeight.w600),
+                  avatar: Icon(Icons.eco, color: _healthColor.withOpacity(0.9), size: 18),
                 ),
               ],
             ),

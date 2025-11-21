@@ -181,7 +181,7 @@ class _SoilFertilizerScreenState extends State<SoilFertilizerScreen> {
         'description': 'Apply 45 kg/acre urea split into two equal doses with irrigation.',
         'reason': 'Low nitrogen detected in top soil layer.',
         'benefit': 'Improves vegetative growth and leaf colour.',
-        'cost': '?850 / acre',
+        'cost': '₹850 / acre',
         'timeline': 'Within 3 days',
       },
       {
@@ -191,7 +191,7 @@ class _SoilFertilizerScreenState extends State<SoilFertilizerScreen> {
         'description': 'Broadcast 50 kg/acre gypsum to keep pH stable for rice transplant.',
         'reason': 'pH leaning acidic; gypsum buffers soil and improves calcium.',
         'benefit': 'Better nutrient uptake, stronger roots.',
-        'cost': '?420 / acre',
+        'cost': '₹420 / acre',
         'timeline': 'This week',
       },
     ];
@@ -240,7 +240,7 @@ class _NutrientTile extends StatelessWidget {
           const SizedBox(height: 6),
           Text(value, style: const TextStyle(fontWeight: FontWeight.w600)),
           const SizedBox(height: 4),
-          Text(status, style: TextStyle(color: color.shade700)),
+          Text(status, style: TextStyle(color: color.withOpacity(0.8))),
         ],
       ),
     );

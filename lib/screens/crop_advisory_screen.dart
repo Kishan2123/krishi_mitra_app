@@ -51,8 +51,8 @@ const _recommendations = [
     'priority': 'Medium',
     'description': 'Shift 30% to Sona masoori early maturing variety for staggered harvest.',
     'reason': 'Better market price in September window.',
-    'benefit': '?240/q premium expected.',
-    'cost': '?950 / acre',
+    'benefit': '₹240/q premium expected.',
+    'cost': '₹950 / acre',
     'timeline': 'Before next sowing',
   },
   {
@@ -62,7 +62,7 @@ const _recommendations = [
     'description': 'Foliar spray of Zn + B mix 1.5g/L during evening hours.',
     'reason': 'Leaf sample shows mild Zn deficiency.',
     'benefit': 'Uniform grain filling.',
-    'cost': '?110 / acre',
+    'cost': '₹110 / acre',
     'timeline': 'After rain clears',
   },
 ];

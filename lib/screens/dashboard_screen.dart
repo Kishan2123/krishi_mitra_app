@@ -117,7 +117,7 @@ const _mockRecommendations = [
     'description': 'Apply 22kg urea/acre tonight after the irrigation cycle completes.',
     'reason': 'Moisture + low nitrogen detected.',
     'benefit': 'Faster tiller growth and greener leaves.',
-    'cost': '?620',
+    'cost': '₹620',
     'timeline': 'Tonight',
   },
   {
@@ -127,7 +127,7 @@ const _mockRecommendations = [
     'description': 'Install pheromone traps (4/acre) near bunds; monitor larvae count.',
     'reason': 'High moth activity in nearby fields.',
     'benefit': 'Reduces chemical sprays; early detection.',
-    'cost': '?180',
+    'cost': '₹180',
     'timeline': 'Within 48 hrs',
   },
 ];

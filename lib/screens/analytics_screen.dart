@@ -13,7 +13,7 @@ class AnalyticsScreen extends StatelessWidget {
         children: [
           const Text('Analytics', style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700)),
           const SizedBox(height: 16),
-          _chartCard('Price trend (?/quintal)', _priceSpots(), Colors.green),
+          _chartCard('Price trend (₹/quintal)', _priceSpots(), Colors.green),
           const SizedBox(height: 12),
           _chartCard('Soil moisture trend (%)', _moistureSpots(), Colors.blue),
           const SizedBox(height: 12),
@@ -62,8 +62,8 @@ class AnalyticsScreen extends StatelessWidget {
                         getTitlesWidget: (value, meta) => Text('W${value.toInt() + 1}'),
                       ),
                     ),
-                    topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                    rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    topTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                    rightTitles: const AxisTitles(sideTitles: SideTitles(showTitles: false)),
                   ),
                   borderData: FlBorderData(show: false),
                   lineBarsData: [
@@ -73,7 +73,10 @@ class AnalyticsScreen extends StatelessWidget {
                       barWidth: 4,
                       color: color,
                       dotData: const FlDotData(show: false),
-                      belowBarData: BarAreaData(show: true, color: color.withOpacity(0.18)),
+                      belowBarData: BarAreaData(
+                        show: true,
+                        color: color.withOpacity(0.18),
+                      ),
                     ),
                   ],
                 ),

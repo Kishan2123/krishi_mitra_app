@@ -94,7 +94,7 @@ class _RegionInsightsScreenState extends State<RegionInsightsScreen> {
           children: [
             Row(
               children: [
-                Icon(Icons.price_change, color: Colors.green.shade700),
+                Icon(Icons.price_change, color: Colors.green.withOpacity(0.8)),
                 const SizedBox(width: 8),
                 const Text('Market summary', style: TextStyle(fontWeight: FontWeight.w700)),
               ],
@@ -117,26 +117,12 @@ class _RegionInsightsScreenState extends State<RegionInsightsScreen> {
   }
 }
 
-extension on Weather {
-  Weather copyWith({String? location}) {
-    return Weather(
-      location: location ?? this.location,
-      temperatureC: temperatureC,
-      humidity: humidity,
-      condition: condition,
-      windSpeedKph: windSpeedKph,
-      rainChance: rainChance,
-      iconName: iconName,
-    );
-  }
-}
-
 const Map<String, Map<String, dynamic>> _mockInsights = {
   'Ranchi': {
     'crops': 'Paddy transplanting active; maize and vegetables expanding',
     'soil': 'Loamy soil with 42% moisture; 28mm rain expected this week',
     'market': {
-      'hot': 'Tomato (?28/kg)',
+      'hot': 'Tomato (\u20b928/kg)',
       'trend': 'Upward due to festival demand',
       'mandis': ['Kanke', 'Itki', 'Nagmangala'],
     },
@@ -145,7 +131,7 @@ const Map<String, Map<String, dynamic>> _mockInsights = {
     'crops': 'Chickpea sowing window open; monitor for wilt',
     'soil': 'Sandy loam, moisture 18%, irrigation advised',
     'market': {
-      'hot': 'Lentil (?94/kg)',
+      'hot': 'Lentil (\u20b994/kg)',
       'trend': 'Stable prices week-on-week',
       'mandis': ['Hazaribagh main', 'Katkamdag'],
     },
@@ -154,7 +140,7 @@ const Map<String, Map<String, dynamic>> _mockInsights = {
     'crops': 'Vegetable cluster expansion; okra & brinjal dominating',
     'soil': 'Alluvial soil with moderate organic carbon',
     'market': {
-      'hot': 'Cauliflower (?32/kg)',
+      'hot': 'Cauliflower (\u20b932/kg)',
       'trend': 'Slight downtrend due to arrivals',
       'mandis': ['Jharia', 'Govindpur'],
     },
@@ -163,7 +149,7 @@ const Map<String, Map<String, dynamic>> _mockInsights = {
     'crops': 'Pulses under irrigation; check micronutrients',
     'soil': 'Red laterite soil; rainfall deficit 12% this month',
     'market': {
-      'hot': 'Mustard (?6,400/quintal)',
+      'hot': 'Mustard (\u20b96,400/quintal)',
       'trend': 'Upward 1.4%',
       'mandis': ['Chas', 'Kasmar'],
     },

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../models/weather.dart';
 
@@ -49,7 +49,7 @@ class WeatherCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        '${weather.temperatureC.toStringAsFixed(1)}�C',
+                        '${weather.temperatureC.toStringAsFixed(1)}°C',
                         style: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w800),
                       ),
                       const SizedBox(width: 8),

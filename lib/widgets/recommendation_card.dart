@@ -63,7 +63,7 @@ class RecommendationCard extends StatelessWidget {
                   child: Text(
                     '$priority priority',
                     style: TextStyle(
-                      color: _priorityColor.shade700,
+                      color: _priorityColor.withOpacity(0.85),
                       fontWeight: FontWeight.w700,
                     ),
                   ),
