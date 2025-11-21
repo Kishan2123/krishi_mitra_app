@@ -1,0 +1,800 @@
+2025-11-21 11:10:47 - KrishiMitra - INFO - Config file not found. Creating with defaults.
+2025-11-21 11:10:47 - KrishiMitra - INFO - Configuration saved to config.yaml
+2025-11-21 11:10:47 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:47 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 11:10:47 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:47 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 25,
+  "catboost_iterations": 1200,
+  "catboost_depth": 6,
+  "catboost_learning_rate": 0.05,
+  "catboost_l2_leaf_reg": 3.0,
+  "catboost_early_stopping_rounds": 100,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10
+}
+2025-11-21 11:10:47 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 11:10:48 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 11:10:48 - KrishiMitra - INFO - Dropping 7 leakage / helper columns: ['Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 11:10:49 - KrishiMitra - INFO - Handling missing values (coarse pass)...
+2025-11-21 11:10:49 - KrishiMitra - INFO - Missing values (coarse pass): 0 -> 0
+2025-11-21 11:10:49 - KrishiMitra - INFO - Generating data quality report...
+2025-11-21 11:10:50 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_111050.json
+2025-11-21 11:10:50 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 11:10:50 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 11:10:50 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:50 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 11:10:50 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:50 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 11:10:50 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 11:10:50 - KrishiMitra - INFO - Preprocessing features (numeric + categorical)...
+2025-11-21 11:10:51 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 11:10:51 - KrishiMitra - INFO - Feature matrix shape: (300000, 29)
+2025-11-21 11:10:51 - KrishiMitra - INFO - Target distribution:
+Crop
+sugarcane    23322
+maize        23307
+potato       23173
+soybean      23139
+lentil       23134
+cotton       23134
+wheat        23108
+sunflower    23050
+tomato       22998
+onion        22990
+chickpea     22922
+groundnut    22918
+rice         22805
+Name: count, dtype: int64
+2025-11-21 11:10:51 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 11:10:51 - KrishiMitra - INFO - Classes: ['chickpea' 'cotton' 'groundnut' 'lentil' 'maize' 'onion' 'potato' 'rice'
+ 'soybean' 'sugarcane']...
+2025-11-21 11:10:52 - KrishiMitra - INFO - Training set: 255,000 samples
+2025-11-21 11:10:52 - KrishiMitra - INFO - Test set: 45,000 samples
+2025-11-21 11:10:52 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 11:10:52 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:52 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 11:10:52 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:10:52 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 11:11:01 - KrishiMitra - INFO - Fold 1: Accuracy=0.8543, Macro-F1=0.8526, best_iter=433
+2025-11-21 11:11:02 - KrishiMitra - INFO - Fold 2/5: training...
+2025-11-21 11:11:15 - KrishiMitra - INFO - Fold 2: Accuracy=0.8577, Macro-F1=0.8562, best_iter=602
+2025-11-21 11:11:15 - KrishiMitra - INFO - Fold 3/5: training...
+2025-11-21 11:11:27 - KrishiMitra - INFO - Fold 3: Accuracy=0.8553, Macro-F1=0.8537, best_iter=602
+2025-11-21 11:11:27 - KrishiMitra - INFO - Fold 4/5: training...
+2025-11-21 11:11:39 - KrishiMitra - INFO - Fold 4: Accuracy=0.8543, Macro-F1=0.8528, best_iter=628
+2025-11-21 11:11:39 - KrishiMitra - INFO - Fold 5/5: training...
+2025-11-21 11:11:51 - KrishiMitra - INFO - Fold 5: Accuracy=0.8522, Macro-F1=0.8505, best_iter=643
+2025-11-21 11:11:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:11:51 - KrishiMitra - INFO - CV SUMMARY
+2025-11-21 11:11:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:11:51 - KrishiMitra - INFO - Mean CV Accuracy: 0.8548 ± 0.0018
+2025-11-21 11:11:51 - KrishiMitra - INFO - Mean CV Macro F1: 0.8532 ± 0.0019
+2025-11-21 11:11:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:11:51 - KrishiMitra - INFO - TRAINING FINAL MODEL
+2025-11-21 11:11:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:11:52 - KrishiMitra - INFO - Final CatBoost params: {'iterations': 1200, 'learning_rate': 0.05, 'depth': 6, 'l2_leaf_reg': 3.0, 'loss_function': 'MultiClass', 'eval_metric': 'Accuracy', 'class_weights': {0: 1.0067432054703662, 1: 0.9975276960630907, 2: 1.0069499289211814, 3: 0.9975276960630907, 4: 0.9901259207200351, 5: 1.0038065920569375, 6: 0.995856456078825, 7: 1.011936886885298, 8: 0.9973248228281786, 9: 0.9894766250698455, 10: 1.0011424802421587, 11: 1.003447136043821, 12: 0.9986449758367079}, 'random_seed': 42, 'early_stopping_rounds': 100, 'verbose': 50, 'task_type': 'GPU', 'devices': '0'}
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - BEST SCORES FROM TRAINING
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - Learn scores: {'Accuracy': 0.8597813909455322, 'MultiClass': 0.3428281153693698}
+2025-11-21 11:12:03 - KrishiMitra - INFO - Validation scores: {'Accuracy': 0.85466346605439, 'MultiClass': 0.35306714790500904}
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - COMPREHENSIVE MODEL EVALUATION
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - Accuracy:          0.8547
+2025-11-21 11:12:03 - KrishiMitra - INFO - Balanced Accuracy: 0.8547
+2025-11-21 11:12:03 - KrishiMitra - INFO - Macro F1-Score:    0.8530
+2025-11-21 11:12:03 - KrishiMitra - INFO - Weighted F1-Score: 0.8531
+2025-11-21 11:12:03 - KrishiMitra - INFO - Top-3 Accuracy:    0.9909
+2025-11-21 11:12:03 - KrishiMitra - INFO - Top-5 Accuracy:    0.9998
+2025-11-21 11:12:03 - KrishiMitra - INFO - 
+======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - DETAILED CLASSIFICATION REPORT
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - 
+======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - WORST PERFORMING CROPS (Need Attention)
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO -   tomato              :  57.3% accuracy (3450 samples)
+2025-11-21 11:12:03 - KrishiMitra - INFO -   maize               :  70.2% accuracy (3496 samples)
+2025-11-21 11:12:03 - KrishiMitra - INFO -   sunflower           :  73.8% accuracy (3457 samples)
+2025-11-21 11:12:03 - KrishiMitra - INFO -   onion               :  75.6% accuracy (3449 samples)
+2025-11-21 11:12:03 - KrishiMitra - INFO -   cotton              :  80.1% accuracy (3470 samples)
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - MODEL ARTIFACTS SAVED
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO -   Model:    models\krishimitra_physical_v20251121_111203_8f07eda8.cbm
+2025-11-21 11:12:03 - KrishiMitra - INFO -   Encoder:  models\label_encoder_v20251121_111203.pkl
+2025-11-21 11:12:03 - KrishiMitra - INFO -   Metadata: models\metadata_v20251121_111203.json
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:03 - KrishiMitra - INFO - TESTING PRODUCTION INFERENCE ON ONE SAMPLE
+2025-11-21 11:12:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:04 - KrishiMitra - INFO - Sample Prediction:
+2025-11-21 11:12:04 - KrishiMitra - INFO -   1. groundnut            - 91.5%
+2025-11-21 11:12:04 - KrishiMitra - INFO -   2. sunflower            - 8.0%
+2025-11-21 11:12:04 - KrishiMitra - INFO -   3. soybean              - 0.2%
+2025-11-21 11:12:04 - KrishiMitra - INFO - Derived categorical info from thresholds:
+2025-11-21 11:12:04 - KrishiMitra - INFO -   pH_Class: Acidic
+2025-11-21 11:12:04 - KrishiMitra - INFO -   Rainfall_Class: Moderate
+2025-11-21 11:12:04 - KrishiMitra - INFO -   Suitability_Flag: Moderate
+2025-11-21 11:12:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 11:12:04 - KrishiMitra - INFO - [OK] PIPELINE COMPLETED SUCCESSFULLY
+2025-11-21 11:12:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:10:57 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 12:10:57 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:10:57 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 12:10:57 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:10:57 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "catboost_iterations": 2000,
+  "catboost_depth": 8,
+  "catboost_learning_rate": 0.04,
+  "catboost_l2_leaf_reg": 6.0,
+  "catboost_early_stopping_rounds": 120,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "catboost_random_strength": 1.5,
+  "catboost_bagging_temperature": 0.8,
+  "catboost_subsample": 0.8,
+  "catboost_rsm": 0.8,
+  "catboost_min_data_in_leaf": 25,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bayesian",
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.3
+}
+2025-11-21 12:10:57 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 12:10:58 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 12:10:58 - KrishiMitra - INFO - Dropping 7 leakage / helper columns: ['Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 12:10:59 - KrishiMitra - INFO - Handling missing values (coarse pass)...
+2025-11-21 12:10:59 - KrishiMitra - INFO - Missing values (coarse pass): 0 -> 0
+2025-11-21 12:10:59 - KrishiMitra - INFO - Generating data quality report...
+2025-11-21 12:11:00 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_121100.json
+2025-11-21 12:11:00 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 12:11:00 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 12:11:00 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:11:00 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 12:11:00 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:11:00 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 12:11:00 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 12:11:00 - KrishiMitra - INFO - Preprocessing features (numeric + categorical)...
+2025-11-21 12:11:01 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 12:11:01 - KrishiMitra - INFO - Feature matrix shape: (300000, 29)
+2025-11-21 12:11:01 - KrishiMitra - INFO - Target distribution:
+Crop
+sugarcane    23322
+maize        23307
+potato       23173
+soybean      23139
+lentil       23134
+cotton       23134
+wheat        23108
+sunflower    23050
+tomato       22998
+onion        22990
+chickpea     22922
+groundnut    22918
+rice         22805
+Name: count, dtype: int64
+2025-11-21 12:11:01 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 12:11:01 - KrishiMitra - INFO - Classes: ['chickpea' 'cotton' 'groundnut' 'lentil' 'maize' 'onion' 'potato' 'rice'
+ 'soybean' 'sugarcane']...
+2025-11-21 12:11:01 - KrishiMitra - INFO - Training set: 255,000 samples
+2025-11-21 12:11:01 - KrishiMitra - INFO - Test set: 45,000 samples
+2025-11-21 12:11:01 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 12:11:01 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:11:01 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 12:11:01 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:11:01 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 12:11:01 - KrishiMitra - ERROR - Pipeline failed: catboost/private/libs/options/bootstrap_options.cpp:16: Error: bayesian bootstrap doesn't support 'subsample' option
+Traceback (most recent call last):
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 1130, in main
+    model, pre_meta, X_test, y_test, le, metrics = train_model_with_cv(df)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 795, in train_model_with_cv
+    model.fit(train_pool, eval_set=val_pool)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/bootstrap_options.cpp:16: Error: bayesian bootstrap doesn't support 'subsample' option
+2025-11-21 12:16:04 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 12:16:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:04 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 12:16:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:04 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "catboost_iterations": 2000,
+  "catboost_depth": 8,
+  "catboost_learning_rate": 0.04,
+  "catboost_l2_leaf_reg": 6.0,
+  "catboost_early_stopping_rounds": 120,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "catboost_random_strength": 1.5,
+  "catboost_bagging_temperature": 0.8,
+  "catboost_subsample": 0.8,
+  "catboost_rsm": 0.8,
+  "catboost_min_data_in_leaf": 25,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bernoulli",
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.3
+}
+2025-11-21 12:16:04 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 12:16:05 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 12:16:05 - KrishiMitra - INFO - Dropping 7 leakage / helper columns: ['Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 12:16:05 - KrishiMitra - INFO - Handling missing values (coarse pass)...
+2025-11-21 12:16:06 - KrishiMitra - INFO - Missing values (coarse pass): 0 -> 0
+2025-11-21 12:16:06 - KrishiMitra - INFO - Generating data quality report...
+2025-11-21 12:16:07 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_121607.json
+2025-11-21 12:16:07 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 12:16:07 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 12:16:07 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:07 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 12:16:07 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:07 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 12:16:07 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 12:16:07 - KrishiMitra - INFO - Preprocessing features (numeric + categorical)...
+2025-11-21 12:16:07 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 12:16:08 - KrishiMitra - INFO - Feature matrix shape: (300000, 29)
+2025-11-21 12:16:08 - KrishiMitra - INFO - Target distribution:
+Crop
+sugarcane    23322
+maize        23307
+potato       23173
+soybean      23139
+lentil       23134
+cotton       23134
+wheat        23108
+sunflower    23050
+tomato       22998
+onion        22990
+chickpea     22922
+groundnut    22918
+rice         22805
+Name: count, dtype: int64
+2025-11-21 12:16:08 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 12:16:08 - KrishiMitra - INFO - Classes: ['chickpea' 'cotton' 'groundnut' 'lentil' 'maize' 'onion' 'potato' 'rice'
+ 'soybean' 'sugarcane']...
+2025-11-21 12:16:08 - KrishiMitra - INFO - Training set: 255,000 samples
+2025-11-21 12:16:08 - KrishiMitra - INFO - Test set: 45,000 samples
+2025-11-21 12:16:08 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 12:16:08 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:08 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 12:16:08 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:16:08 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 12:16:08 - KrishiMitra - ERROR - Pipeline failed: catboost/private/libs/options/bootstrap_options.cpp:44: Error: bagging temperature available for bayesian bootstrap only
+Traceback (most recent call last):
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 1130, in main
+    model, pre_meta, X_test, y_test, le, metrics = train_model_with_cv(df)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 795, in train_model_with_cv
+    model.fit(train_pool, eval_set=val_pool)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/bootstrap_options.cpp:44: Error: bagging temperature available for bayesian bootstrap only
+2025-11-21 12:21:30 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 12:21:30 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:30 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 12:21:30 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:30 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "catboost_iterations": 2000,
+  "catboost_depth": 8,
+  "catboost_learning_rate": 0.04,
+  "catboost_l2_leaf_reg": 6.0,
+  "catboost_early_stopping_rounds": 120,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "catboost_random_strength": 1.5,
+  "catboost_subsample": 0.8,
+  "catboost_rsm": 0.8,
+  "catboost_min_data_in_leaf": 25,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bernoulli",
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.3
+}
+2025-11-21 12:21:30 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 12:21:31 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 12:21:31 - KrishiMitra - INFO - Dropping 7 leakage / helper columns: ['Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 12:21:31 - KrishiMitra - INFO - Handling missing values (coarse pass)...
+2025-11-21 12:21:31 - KrishiMitra - INFO - Missing values (coarse pass): 0 -> 0
+2025-11-21 12:21:31 - KrishiMitra - INFO - Generating data quality report...
+2025-11-21 12:21:32 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_122132.json
+2025-11-21 12:21:32 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 12:21:32 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 12:21:32 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:32 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 12:21:32 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:32 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 12:21:32 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 12:21:32 - KrishiMitra - INFO - Preprocessing features (numeric + categorical)...
+2025-11-21 12:21:33 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 12:21:33 - KrishiMitra - INFO - Feature matrix shape: (300000, 29)
+2025-11-21 12:21:33 - KrishiMitra - INFO - Target distribution:
+Crop
+sugarcane    23322
+maize        23307
+potato       23173
+soybean      23139
+lentil       23134
+cotton       23134
+wheat        23108
+sunflower    23050
+tomato       22998
+onion        22990
+chickpea     22922
+groundnut    22918
+rice         22805
+Name: count, dtype: int64
+2025-11-21 12:21:33 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 12:21:33 - KrishiMitra - INFO - Classes: ['chickpea' 'cotton' 'groundnut' 'lentil' 'maize' 'onion' 'potato' 'rice'
+ 'soybean' 'sugarcane']...
+2025-11-21 12:21:33 - KrishiMitra - INFO - Training set: 255,000 samples
+2025-11-21 12:21:33 - KrishiMitra - INFO - Test set: 45,000 samples
+2025-11-21 12:21:33 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 12:21:33 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:33 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 12:21:33 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:21:34 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 12:21:34 - KrishiMitra - ERROR - Pipeline failed: catboost/private/libs/options/bootstrap_options.cpp:44: Error: bagging temperature available for bayesian bootstrap only
+Traceback (most recent call last):
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 1130, in main
+    model, pre_meta, X_test, y_test, le, metrics = train_model_with_cv(df)
+                                                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "d:\FarmAura\crop_recommendation_v_0.0.py", line 795, in train_model_with_cv
+    model.fit(train_pool, eval_set=val_pool)
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 5245, in fit
+    self._fit(X, y, cat_features, text_features, embedding_features, None, graph, sample_weight, None, None, None, None, baseline, use_best_model,
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2395, in _fit
+    train_params = self._prepare_train_params(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\admin\AppData\Local\Programs\Python\Python311\Lib\site-packages\catboost\core.py", line 2321, in _prepare_train_params
+    _check_train_params(params)
+  File "_catboost.pyx", line 6601, in _catboost._check_train_params
+  File "_catboost.pyx", line 6623, in _catboost._check_train_params
+_catboost.CatBoostError: catboost/private/libs/options/bootstrap_options.cpp:44: Error: bagging temperature available for bayesian bootstrap only
+2025-11-21 12:39:02 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 12:39:02 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:39:02 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 12:39:02 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:39:02 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "optuna_timeout_sec": 1800,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "catboost_iterations": 2500,
+  "catboost_learning_rate": 0.03,
+  "catboost_depth": 9,
+  "catboost_l2_leaf_reg": 8.0,
+  "catboost_random_strength": 2.0,
+  "catboost_rsm": 0.85,
+  "catboost_min_data_in_leaf": 30,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bayesian",
+  "catboost_bagging_temperature": 0.6,
+  "catboost_subsample": 0.85,
+  "catboost_early_stopping_rounds": 150,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.5
+}
+2025-11-21 12:39:02 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 12:39:03 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 12:39:03 - KrishiMitra - INFO - Dropping leakage/helper columns: ['Suitable', 'Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 12:39:04 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_123904.json
+2025-11-21 12:39:04 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 12:39:04 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 12:39:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:39:04 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 12:39:04 - KrishiMitra - INFO - ======================================================================
+2025-11-21 12:39:04 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 12:39:04 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 12:39:05 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 12:39:05 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 12:39:05 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 12:39:06 - KrishiMitra - INFO - Starting Optuna hyperparameter tuning...
+2025-11-21 13:43:56 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 13:43:56 - KrishiMitra - INFO - ======================================================================
+2025-11-21 13:43:56 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 13:43:56 - KrishiMitra - INFO - ======================================================================
+2025-11-21 13:43:56 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "optuna_timeout_sec": 1800,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "catboost_iterations": 2500,
+  "catboost_learning_rate": 0.03,
+  "catboost_depth": 9,
+  "catboost_l2_leaf_reg": 8.0,
+  "catboost_random_strength": 2.0,
+  "catboost_rsm": 0.85,
+  "catboost_min_data_in_leaf": 30,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bayesian",
+  "catboost_bagging_temperature": 0.6,
+  "catboost_subsample": 0.85,
+  "catboost_early_stopping_rounds": 150,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.5
+}
+2025-11-21 13:43:56 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 13:43:57 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 13:43:57 - KrishiMitra - INFO - Dropping leakage/helper columns: ['Suitable', 'Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 13:43:58 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_134358.json
+2025-11-21 13:43:58 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 13:43:58 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 13:43:58 - KrishiMitra - INFO - ======================================================================
+2025-11-21 13:43:58 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 13:43:58 - KrishiMitra - INFO - ======================================================================
+2025-11-21 13:43:58 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 13:43:58 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 13:43:59 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 13:43:59 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 13:43:59 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 13:43:59 - KrishiMitra - INFO - Starting Optuna hyperparameter tuning...
+2025-11-21 14:14:34 - KrishiMitra - INFO - Optuna best score: 0.8541
+2025-11-21 14:14:34 - KrishiMitra - INFO - Optuna best params: {'depth': 8, 'learning_rate': 0.02450183574276551, 'l2_leaf_reg': 8.670676189815461, 'random_strength': 1.6776517778651354, 'min_data_in_leaf': 56, 'bagging_temperature': 0.04738151091421028}
+2025-11-21 14:14:34 - KrishiMitra - INFO - Starting Optuna hyperparameter tuning...
+2025-11-21 14:46:16 - KrishiMitra - INFO - Optuna best score: 0.8542
+2025-11-21 14:46:16 - KrishiMitra - INFO - Optuna best params: {'depth': 6, 'learning_rate': 0.048940677257147555, 'l2_leaf_reg': 5.433847867327942, 'random_strength': 1.3434545865151164, 'min_data_in_leaf': 29, 'bagging_temperature': 0.5674053888439006}
+2025-11-21 14:46:16 - KrishiMitra - INFO - ======================================================================
+2025-11-21 14:46:16 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 14:46:16 - KrishiMitra - INFO - ======================================================================
+2025-11-21 14:46:16 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 14:46:30 - KrishiMitra - INFO - Fold 1 train time: 14.1s
+2025-11-21 14:46:30 - KrishiMitra - INFO - Fold 1: Accuracy=0.8542, Macro-F1=0.8541, best_iter=625
+2025-11-21 14:46:30 - KrishiMitra - INFO - Fold 2/5: training...
+2025-11-21 14:46:44 - KrishiMitra - INFO - Fold 2 train time: 13.3s
+2025-11-21 14:46:44 - KrishiMitra - INFO - Fold 2: Accuracy=0.8552, Macro-F1=0.8551, best_iter=595
+2025-11-21 14:46:44 - KrishiMitra - INFO - Fold 3/5: training...
+2025-11-21 14:47:00 - KrishiMitra - INFO - Fold 3 train time: 15.5s
+2025-11-21 14:47:00 - KrishiMitra - INFO - Fold 3: Accuracy=0.8551, Macro-F1=0.8550, best_iter=717
+2025-11-21 14:47:00 - KrishiMitra - INFO - Fold 4/5: training...
+2025-11-21 14:47:13 - KrishiMitra - INFO - Fold 4 train time: 13.3s
+2025-11-21 14:47:13 - KrishiMitra - INFO - Fold 4: Accuracy=0.8538, Macro-F1=0.8538, best_iter=622
+2025-11-21 14:47:14 - KrishiMitra - INFO - Fold 5/5: training...
+2025-11-21 14:47:27 - KrishiMitra - INFO - Fold 5 train time: 13.2s
+2025-11-21 14:47:27 - KrishiMitra - INFO - Fold 5: Accuracy=0.8524, Macro-F1=0.8522, best_iter=622
+2025-11-21 14:47:27 - KrishiMitra - INFO - ======================================================================
+2025-11-21 14:47:27 - KrishiMitra - INFO - CV SUMMARY
+2025-11-21 14:47:27 - KrishiMitra - INFO - ======================================================================
+2025-11-21 14:47:27 - KrishiMitra - INFO - Mean CV Accuracy: 0.8541 ± 0.0010
+2025-11-21 14:47:27 - KrishiMitra - INFO - Mean CV Macro F1: 0.8540 ± 0.0011
+2025-11-21 14:47:27 - KrishiMitra - INFO - Final CatBoost params: {'iterations': 672, 'learning_rate': 0.048940677257147555, 'depth': 6, 'l2_leaf_reg': 5.433847867327942, 'loss_function': 'MultiClass', 'eval_metric': 'Accuracy', 'class_weights': {0: 1.0067432054703662, 1: 0.9975276960630907, 2: 1.0069499289211814, 3: 0.9975276960630907, 4: 1.4851888810800526, 5: 1.505709888085406, 6: 0.995856456078825, 7: 1.011936886885298, 8: 0.9973248228281786, 9: 0.9894766250698455, 10: 1.501713720363238, 11: 1.5051707040657316, 12: 0.9986449758367079}, 'random_seed': 42, 'early_stopping_rounds': 150, 'verbose': 50, 'random_strength': 1.3434545865151164, 'min_data_in_leaf': 29, 'border_count': 254, 'bootstrap_type': 'Bayesian', 'bagging_temperature': 0.5674053888439006, 'task_type': 'GPU', 'devices': '0'}
+2025-11-21 16:00:25 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 16:00:25 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:25 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 16:00:25 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:25 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "optuna_timeout_sec": 1800,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "catboost_iterations": 2500,
+  "catboost_learning_rate": 0.03,
+  "catboost_depth": 9,
+  "catboost_l2_leaf_reg": 8.0,
+  "catboost_random_strength": 2.0,
+  "catboost_rsm": 0.85,
+  "catboost_min_data_in_leaf": 30,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bayesian",
+  "catboost_bagging_temperature": 0.6,
+  "catboost_subsample": 0.85,
+  "catboost_early_stopping_rounds": 150,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.5
+}
+2025-11-21 16:00:25 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 16:00:40 - KrishiMitra - INFO - Configuration loaded from config.yaml
+2025-11-21 16:00:40 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:40 - KrishiMitra - INFO - KRISHIMITRA.AI - PHYSICAL & CHEMICAL ML PIPELINE (GPU)
+2025-11-21 16:00:40 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:40 - KrishiMitra - INFO - Configuration:
+{
+  "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+  "model_dir": "models",
+  "logs_dir": "logs",
+  "random_seed": 42,
+  "test_size": 0.15,
+  "n_folds": 5,
+  "optimize_hyperparams": true,
+  "optuna_trials": 50,
+  "optuna_timeout_sec": 1800,
+  "use_gpu": true,
+  "gpu_devices": "0",
+  "catboost_iterations": 2500,
+  "catboost_learning_rate": 0.03,
+  "catboost_depth": 9,
+  "catboost_l2_leaf_reg": 8.0,
+  "catboost_random_strength": 2.0,
+  "catboost_rsm": 0.85,
+  "catboost_min_data_in_leaf": 30,
+  "catboost_border_count": 254,
+  "catboost_bootstrap_type": "Bayesian",
+  "catboost_bagging_temperature": 0.6,
+  "catboost_subsample": 0.85,
+  "catboost_early_stopping_rounds": 150,
+  "catboost_eval_metric": "Accuracy",
+  "catboost_log_period": 50,
+  "top_n_recommendations": 3,
+  "min_confidence_threshold": 0.1,
+  "create_ratio_features": true,
+  "log_transform_micronutrients": true,
+  "create_climate_anomalies": true,
+  "max_ph": 14.0,
+  "min_ph": 0.0,
+  "max_rainfall_mm": 5000,
+  "max_temperature_c": 60,
+  "min_temperature_c": -10,
+  "boost_weak_classes": true,
+  "weak_class_names": [
+    "tomato",
+    "maize",
+    "sunflower",
+    "onion"
+  ],
+  "weak_class_boost_factor": 1.5
+}
+2025-11-21 16:00:40 - KrishiMitra - INFO - Loading dataset from expanded_synthetic_crop_dataset_300k.csv...
+2025-11-21 16:00:41 - KrishiMitra - INFO - Loaded 300,000 rows and 43 columns
+2025-11-21 16:00:41 - KrishiMitra - INFO - Dropping leakage/helper columns: ['Suitable', 'Expected_Price', 'MarketAccessIndex', 'IrrigationAccessIndex', 'FertilizerAffordabilityIndex', 'CWR_mm', 'GDD', 'FarmSizeClass']
+2025-11-21 16:00:43 - KrishiMitra - INFO - [OK] Data quality report saved to logs\data_quality_20251121_160043.json
+2025-11-21 16:00:43 - KrishiMitra - INFO - Starting data validation...
+2025-11-21 16:00:43 - KrishiMitra - INFO - [OK] Data validation passed
+2025-11-21 16:00:43 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:43 - KrishiMitra - INFO - STARTING MODEL TRAINING PIPELINE
+2025-11-21 16:00:43 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:00:43 - KrishiMitra - INFO - Selected numeric features (27): ['Temperature', 'Humidity', 'Rainfall', 'Temperature_Anomaly', 'Rainfall_Anomaly', 'pH', 'OrganicCarbon', 'Nitrogen', 'Phosphorus', 'Potassium', 'Sulphur', 'Zinc', 'Copper', 'Boron', 'Iron', 'Manganese', 'EC (Electrical Conductivity)', 'SoilSalinityIndex', 'SoilMoisture', 'SoilPorosity', 'BulkDensity', 'CEC', 'WaterHoldingCapacity', 'NDVI', 'EVI', 'SoilFertilityIndex', 'ErosionRisk']
+2025-11-21 16:00:43 - KrishiMitra - INFO - Selected categorical features (2): ['SoilTexture', 'SoilDepthCategory']
+2025-11-21 16:00:43 - KrishiMitra - INFO - [OK] Preprocessing complete. Final feature matrix: (300000, 29)
+2025-11-21 16:00:43 - KrishiMitra - INFO - Number of classes: 13
+2025-11-21 16:00:44 - KrishiMitra - INFO - CatBoost categorical feature indices: [27, 28]
+2025-11-21 16:00:44 - KrishiMitra - INFO - Starting Optuna hyperparameter tuning...
+2025-11-21 16:31:03 - KrishiMitra - INFO - Optuna best score: 0.8545
+2025-11-21 16:31:03 - KrishiMitra - INFO - Optuna best params: {'depth': 7, 'learning_rate': 0.03287326793674433, 'l2_leaf_reg': 4.737444575831281, 'random_strength': 2.078870247558015, 'min_data_in_leaf': 60, 'bagging_temperature': 0.2950790534968636}
+2025-11-21 16:31:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:31:03 - KrishiMitra - INFO - CROSS-VALIDATION
+2025-11-21 16:31:03 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:31:03 - KrishiMitra - INFO - Fold 1/5: training...
+2025-11-21 16:31:18 - KrishiMitra - INFO - Fold 1 train time: 14.4s
+2025-11-21 16:31:18 - KrishiMitra - INFO - Fold 1: Accuracy=0.8546, Macro-F1=0.8544, best_iter=515
+2025-11-21 16:31:18 - KrishiMitra - INFO - Fold 2/5: training...
+2025-11-21 16:31:37 - KrishiMitra - INFO - Fold 2 train time: 19.6s
+2025-11-21 16:31:38 - KrishiMitra - INFO - Fold 2: Accuracy=0.8555, Macro-F1=0.8554, best_iter=775
+2025-11-21 16:31:38 - KrishiMitra - INFO - Fold 3/5: training...
+2025-11-21 16:32:02 - KrishiMitra - INFO - Fold 3 train time: 23.9s
+2025-11-21 16:32:02 - KrishiMitra - INFO - Fold 3: Accuracy=0.8556, Macro-F1=0.8555, best_iter=996
+2025-11-21 16:32:02 - KrishiMitra - INFO - Fold 4/5: training...
+2025-11-21 16:32:26 - KrishiMitra - INFO - Fold 4 train time: 23.8s
+2025-11-21 16:32:26 - KrishiMitra - INFO - Fold 4: Accuracy=0.8540, Macro-F1=0.8539, best_iter=1006
+2025-11-21 16:32:26 - KrishiMitra - INFO - Fold 5/5: training...
+2025-11-21 16:32:51 - KrishiMitra - INFO - Fold 5 train time: 25.0s
+2025-11-21 16:32:51 - KrishiMitra - INFO - Fold 5: Accuracy=0.8526, Macro-F1=0.8523, best_iter=1052
+2025-11-21 16:32:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:32:51 - KrishiMitra - INFO - CV SUMMARY
+2025-11-21 16:32:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:32:51 - KrishiMitra - INFO - Mean CV Accuracy: 0.8545 ± 0.0011
+2025-11-21 16:32:51 - KrishiMitra - INFO - Mean CV Macro F1: 0.8543 ± 0.0012
+2025-11-21 16:32:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:32:51 - KrishiMitra - INFO - TRAINING FINAL MODEL
+2025-11-21 16:32:51 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:32:51 - KrishiMitra - INFO - Final CatBoost params: {'iterations': 1046, 'learning_rate': 0.03287326793674433, 'depth': 7, 'l2_leaf_reg': 4.737444575831281, 'random_strength': 2.078870247558015, 'min_data_in_leaf': 60, 'border_count': 254, 'bootstrap_type': 'Bayesian', 'class_weights': {0: 1.0067432054703662, 1: 0.9975276960630907, 2: 1.0069499289211814, 3: 0.9975276960630907, 4: 1.4851888810800526, 5: 1.505709888085406, 6: 0.995856456078825, 7: 1.011936886885298, 8: 0.9973248228281786, 9: 0.9894766250698455, 10: 1.501713720363238, 11: 1.5051707040657316, 12: 0.9986449758367079}, 'loss_function': 'MultiClass', 'eval_metric': 'Accuracy', 'random_seed': 42, 'early_stopping_rounds': 150, 'verbose': 50, 'task_type': 'GPU', 'devices': '0', 'bagging_temperature': 0.2950790534968636, 'od_type': 'Iter', 'allow_writing_files': False}
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - COMPREHENSIVE MODEL EVALUATION
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - Accuracy:            0.8549 (85.49%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - Balanced Accuracy:   0.8548 (85.48%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - Macro F1-Score:      0.8546
+2025-11-21 16:33:13 - KrishiMitra - INFO - Weighted F1-Score:   0.8547
+2025-11-21 16:33:13 - KrishiMitra - INFO - Top-3 Accuracy:     0.9911 (99.11%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - Top-5 Accuracy:     0.9998 (99.98%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - WORST PERFORMING CROPS
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - tomato              :  58.6%
+2025-11-21 16:33:13 - KrishiMitra - INFO - maize               :  73.3%
+2025-11-21 16:33:13 - KrishiMitra - INFO - cotton              :  75.9%
+2025-11-21 16:33:13 - KrishiMitra - INFO - onion               :  77.8%
+2025-11-21 16:33:13 - KrishiMitra - INFO - sunflower           :  78.3%
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - MODEL ARTIFACTS SAVED
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - Model:    models\krishimitra_physical_v20251121_163313_8f07eda8.cbm
+2025-11-21 16:33:13 - KrishiMitra - INFO - Encoder:  models\label_encoder_v20251121_163313.pkl
+2025-11-21 16:33:13 - KrishiMitra - INFO - Metadata: models\metadata_v20251121_163313.json
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - SAMPLE INFERENCE
+2025-11-21 16:33:13 - KrishiMitra - INFO - ======================================================================
+2025-11-21 16:33:13 - KrishiMitra - INFO - 1. groundnut  (88.2%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - 2. sunflower  (11.3%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - 3. soybean  (0.2%)
+2025-11-21 16:33:13 - KrishiMitra - INFO - {'pH_Class': 'Acidic', 'Rainfall_Class': 'Moderate', 'Suitability_Flag': 'Moderate'}

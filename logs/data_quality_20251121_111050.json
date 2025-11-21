@@ -1,0 +1,334 @@
+{
+  "total_rows": 300000,
+  "total_columns": 36,
+  "memory_usage_mb": 229.96183967590332,
+  "missing_values": {},
+  "duplicates": 0,
+  "numeric_columns": {
+    "Temperature": {
+      "mean": 22.579341733333333,
+      "std": 5.194154156113998,
+      "min": 2.07,
+      "max": 38.83,
+      "median": 23.63,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Humidity": {
+      "mean": 65.0009317,
+      "std": 11.972023678313745,
+      "min": 10.0,
+      "max": 100.0,
+      "median": 65.01,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Rainfall": {
+      "mean": 630.9049959333332,
+      "std": 376.9584526393645,
+      "min": 0.0,
+      "max": 2750.65,
+      "median": 539.74,
+      "zeros": 152,
+      "negatives": 0
+    },
+    "Temperature_Anomaly": {
+      "mean": -0.0054021,
+      "std": 1.5007240253371894,
+      "min": -6.96,
+      "max": 7.16,
+      "median": 0.0,
+      "zeros": 810,
+      "negatives": 149960
+    },
+    "Rainfall_Anomaly": {
+      "mean": -0.00039882,
+      "std": 0.1501394470776623,
+      "min": -0.649,
+      "max": 0.69,
+      "median": -0.001,
+      "zeros": 785,
+      "negatives": 150086
+    },
+    "pH": {
+      "mean": 6.550221866666667,
+      "std": 0.7469001965734965,
+      "min": 4.5,
+      "max": 8.5,
+      "median": 6.54,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "OrganicCarbon": {
+      "mean": 1.9880666366666668,
+      "std": 1.1013483840443488,
+      "min": 0.08,
+      "max": 3.9,
+      "median": 1.989,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Nitrogen": {
+      "mean": 130.9606335666667,
+      "std": 75.84741768183997,
+      "min": 50.0,
+      "max": 399.99,
+      "median": 111.45,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Phosphorus": {
+      "mean": 35.581361199999996,
+      "std": 15.998537031171267,
+      "min": 10.0,
+      "max": 100.0,
+      "median": 32.35,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Potassium": {
+      "mean": 239.01560200000003,
+      "std": 122.11352764235025,
+      "min": 60.01,
+      "max": 799.99,
+      "median": 217.4,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Sulphur": {
+      "mean": 53.4422982,
+      "std": 30.665913747218262,
+      "min": 0.3,
+      "max": 106.5,
+      "median": 53.46,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Zinc": {
+      "mean": 2.50483647,
+      "std": 1.4360754753484148,
+      "min": 0.02,
+      "max": 5.0,
+      "median": 2.508,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Copper": {
+      "mean": 2.5182857533333336,
+      "std": 1.4341561431742742,
+      "min": 0.03,
+      "max": 5.0,
+      "median": 2.519,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Boron": {
+      "mean": 2.00716634,
+      "std": 1.149042646690866,
+      "min": 0.02,
+      "max": 4.0,
+      "median": 2.006,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Iron": {
+      "mean": 52.56781396666666,
+      "std": 27.44636126663692,
+      "min": 5.0,
+      "max": 100.0,
+      "median": 52.63,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Manganese": {
+      "mean": 40.5283052,
+      "std": 22.818449296795215,
+      "min": 1.0,
+      "max": 80.0,
+      "median": 40.54,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "EC (Electrical Conductivity)": {
+      "mean": 0.60583773,
+      "std": 0.34280143303063276,
+      "min": 0.01,
+      "max": 1.2,
+      "median": 0.606,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "SoilSalinityIndex": {
+      "mean": 0.3029191466666667,
+      "std": 0.17140068264173236,
+      "min": 0.005,
+      "max": 0.6,
+      "median": 0.303,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "SoilMoisture": {
+      "mean": 3.8155539,
+      "std": 1.6278737546581001,
+      "min": 3.0,
+      "max": 17.81,
+      "median": 3.0,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "SoilPorosity": {
+      "mean": 45.28166976666667,
+      "std": 7.634090493219967,
+      "min": 32.08,
+      "max": 58.49,
+      "median": 45.28,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "BulkDensity": {
+      "mean": 1.4500358366666668,
+      "std": 0.2023036218367119,
+      "min": 1.1,
+      "max": 1.8,
+      "median": 1.45,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "CEC": {
+      "mean": 22.492522366666662,
+      "std": 10.10802097888735,
+      "min": 5.0,
+      "max": 40.0,
+      "median": 22.49,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "WaterHoldingCapacity": {
+      "mean": 47.9318304,
+      "std": 16.796483734515842,
+      "min": 14.12,
+      "max": 80.0,
+      "median": 47.93,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "NDVI": {
+      "mean": 0.39845732,
+      "std": 0.15922292970828275,
+      "min": 0.01,
+      "max": 0.9,
+      "median": 0.398,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "EVI": {
+      "mean": 0.2794091366666667,
+      "std": 0.12555612507954284,
+      "min": 0.01,
+      "max": 0.799,
+      "median": 0.279,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "SoilFertilityIndex": {
+      "mean": 0.22649762,
+      "std": 0.07325205062348313,
+      "min": 0.061,
+      "max": 0.577,
+      "median": 0.215,
+      "zeros": 0,
+      "negatives": 0
+    },
+    "Suitable": {
+      "mean": 0.99055,
+      "std": 0.09675085892346905,
+      "min": 0.0,
+      "max": 1.0,
+      "median": 1.0,
+      "zeros": 2835,
+      "negatives": 0
+    }
+  },
+  "categorical_columns": {
+    "State": {
+      "unique_values": 11,
+      "most_common": {
+        "Jharkhand": 75000,
+        "Bihar": 22868,
+        "Assam": 22746,
+        "Gujarat": 22644,
+        "Maharashtra": 22614
+      }
+    },
+    "District": {
+      "unique_values": 16,
+      "most_common": {
+        "Bihar District": 22868,
+        "Assam District": 22746,
+        "Gujarat District": 22644,
+        "Maharashtra District": 22614,
+        "Haryana District": 22491
+      }
+    },
+    "Season": {
+      "unique_values": 3,
+      "most_common": {
+        "Kharif": 161351,
+        "Rabi": 115327,
+        "Perennial": 23322
+      }
+    },
+    "Rainfall_class": {
+      "unique_values": 3,
+      "most_common": {
+        "moderate": 191325,
+        "high": 84490,
+        "low": 24185
+      }
+    },
+    "pH_class": {
+      "unique_values": 3,
+      "most_common": {
+        "neutral": 247810,
+        "alkaline": 29524,
+        "acidic": 22666
+      }
+    },
+    "SoilTexture": {
+      "unique_values": 6,
+      "most_common": {
+        "Clay Loam": 50318,
+        "Sandy": 50302,
+        "Clay": 50057,
+        "Silt": 49915,
+        "Loam": 49711
+      }
+    },
+    "SoilDepthCategory": {
+      "unique_values": 3,
+      "most_common": {
+        "Moderate (30-60cm)": 149985,
+        "Shallow (<30cm)": 89766,
+        "Deep (>60cm)": 60249
+      }
+    },
+    "ErosionRisk": {
+      "unique_values": 3,
+      "most_common": {
+        "Low": 179938,
+        "Moderate": 90315,
+        "High": 29747
+      }
+    },
+    "Crop": {
+      "unique_values": 13,
+      "most_common": {
+        "sugarcane": 23322,
+        "maize": 23307,
+        "potato": 23173,
+        "soybean": 23139,
+        "lentil": 23134
+      }
+    }
+  }
+}

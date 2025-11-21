@@ -1,0 +1,564 @@
+{
+  "version": "20251121_163313",
+  "data_hash": "8f07eda8",
+  "training_samples": 255000,
+  "feature_names": [
+    "Temperature",
+    "Humidity",
+    "Rainfall",
+    "Temperature_Anomaly",
+    "Rainfall_Anomaly",
+    "pH",
+    "OrganicCarbon",
+    "Nitrogen",
+    "Phosphorus",
+    "Potassium",
+    "Sulphur",
+    "Zinc",
+    "Copper",
+    "Boron",
+    "Iron",
+    "Manganese",
+    "EC (Electrical Conductivity)",
+    "SoilSalinityIndex",
+    "SoilMoisture",
+    "SoilPorosity",
+    "BulkDensity",
+    "CEC",
+    "WaterHoldingCapacity",
+    "NDVI",
+    "EVI",
+    "SoilFertilityIndex",
+    "ErosionRisk",
+    "SoilTexture",
+    "SoilDepthCategory"
+  ],
+  "categorical_features": [
+    "SoilTexture",
+    "SoilDepthCategory"
+  ],
+  "class_names": [
+    "chickpea",
+    "cotton",
+    "groundnut",
+    "lentil",
+    "maize",
+    "onion",
+    "potato",
+    "rice",
+    "soybean",
+    "sugarcane",
+    "sunflower",
+    "tomato",
+    "wheat"
+  ],
+  "metrics": {
+    "accuracy": 0.8548666666666667,
+    "balanced_accuracy": 0.8548002757746873,
+    "macro_f1": 0.8546330143364865,
+    "weighted_f1": 0.8547370690035088,
+    "top3_accuracy": 0.9911111111111112,
+    "top5_accuracy": 0.9998222222222222,
+    "per_class_accuracy": [
+      0.8406050029086678,
+      0.7585014409221902,
+      0.9197207678883071,
+      0.9363112391930836,
+      0.7334096109839817,
+      0.7776167004928964,
+      0.9574223245109321,
+      0.9310143232972815,
+      0.9997118985883031,
+      0.9651229273870783,
+      0.7830488863176164,
+      0.5860869565217391,
+      0.9238315060588574
+    ],
+    "confusion_matrix": [
+      [
+        2890,
+        1,
+        15,
+        432,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        100,
+        0,
+        0
+      ],
+      [
+        1,
+        2632,
+        175,
+        0,
+        215,
+        12,
+        0,
+        5,
+        1,
+        0,
+        270,
+        159,
+        0
+      ],
+      [
+        37,
+        15,
+        3162,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        224,
+        0,
+        0
+      ],
+      [
+        219,
+        0,
+        0,
+        3249,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        203,
+        2,
+        0,
+        2564,
+        73,
+        4,
+        39,
+        0,
+        0,
+        306,
+        305,
+        0
+      ],
+      [
+        0,
+        16,
+        0,
+        0,
+        57,
+        2682,
+        8,
+        0,
+        0,
+        0,
+        155,
+        315,
+        216
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        11,
+        56,
+        3328,
+        8,
+        0,
+        0,
+        0,
+        73,
+        0
+      ],
+      [
+        0,
+        35,
+        0,
+        0,
+        145,
+        1,
+        15,
+        3185,
+        0,
+        7,
+        0,
+        33,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3470,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        5,
+        0,
+        2,
+        115,
+        0,
+        3376,
+        0,
+        0,
+        0
+      ],
+      [
+        159,
+        79,
+        336,
+        0,
+        69,
+        65,
+        0,
+        0,
+        0,
+        0,
+        2707,
+        40,
+        2
+      ],
+      [
+        1,
+        93,
+        0,
+        0,
+        315,
+        711,
+        32,
+        11,
+        0,
+        0,
+        242,
+        2022,
+        23
+      ],
+      [
+        2,
+        0,
+        0,
+        1,
+        0,
+        247,
+        0,
+        0,
+        0,
+        0,
+        5,
+        9,
+        3202
+      ]
+    ]
+  },
+  "hyperparameters": {
+    "iterations": 1046,
+    "learning_rate": 0.03287326793674433,
+    "depth": 7,
+    "l2_leaf_reg": 4.737444575831281,
+    "random_strength": 2.078870247558015,
+    "min_data_in_leaf": 60,
+    "border_count": 254,
+    "bootstrap_type": "Bayesian",
+    "class_weights": {
+      "0": 1.0067432054703662,
+      "1": 0.9975276960630907,
+      "2": 1.0069499289211814,
+      "3": 0.9975276960630907,
+      "4": 1.4851888810800526,
+      "5": 1.505709888085406,
+      "6": 0.995856456078825,
+      "7": 1.011936886885298,
+      "8": 0.9973248228281786,
+      "9": 0.9894766250698455,
+      "10": 1.501713720363238,
+      "11": 1.5051707040657316,
+      "12": 0.9986449758367079
+    },
+    "loss_function": "MultiClass",
+    "eval_metric": "Accuracy",
+    "random_seed": 42,
+    "early_stopping_rounds": 150,
+    "verbose": 50,
+    "task_type": "GPU",
+    "devices": "0",
+    "bagging_temperature": 0.2950790534968636,
+    "od_type": "Iter",
+    "allow_writing_files": false
+  },
+  "preprocessing_meta": {
+    "numeric_features": [
+      "Temperature",
+      "Humidity",
+      "Rainfall",
+      "Temperature_Anomaly",
+      "Rainfall_Anomaly",
+      "pH",
+      "OrganicCarbon",
+      "Nitrogen",
+      "Phosphorus",
+      "Potassium",
+      "Sulphur",
+      "Zinc",
+      "Copper",
+      "Boron",
+      "Iron",
+      "Manganese",
+      "EC (Electrical Conductivity)",
+      "SoilSalinityIndex",
+      "SoilMoisture",
+      "SoilPorosity",
+      "BulkDensity",
+      "CEC",
+      "WaterHoldingCapacity",
+      "NDVI",
+      "EVI",
+      "SoilFertilityIndex",
+      "ErosionRisk"
+    ],
+    "categorical_features": [
+      "SoilTexture",
+      "SoilDepthCategory"
+    ],
+    "numeric_medians": {
+      "Temperature": 23.63,
+      "Humidity": 65.01,
+      "Rainfall": 539.74,
+      "Temperature_Anomaly": 0.0,
+      "Rainfall_Anomaly": -0.001,
+      "pH": 6.54,
+      "OrganicCarbon": 1.989,
+      "Nitrogen": 111.45,
+      "Phosphorus": 32.35,
+      "Potassium": 217.4,
+      "Sulphur": 53.46,
+      "Zinc": 2.508,
+      "Copper": 2.519,
+      "Boron": 2.006,
+      "Iron": 52.63,
+      "Manganese": 40.54,
+      "EC (Electrical Conductivity)": 0.606,
+      "SoilSalinityIndex": 0.303,
+      "SoilMoisture": 3.0,
+      "SoilPorosity": 45.28,
+      "BulkDensity": 1.45,
+      "CEC": 22.49,
+      "WaterHoldingCapacity": 47.93,
+      "NDVI": 0.398,
+      "EVI": 0.279,
+      "SoilFertilityIndex": 0.215,
+      "ErosionRisk": NaN
+    },
+    "numeric_clip_bounds": {
+      "Temperature": [
+        9.94,
+        31.85
+      ],
+      "Humidity": [
+        36.96,
+        92.92
+      ],
+      "Rainfall": [
+        117.98989999999999,
+        1838.8410000000008
+      ],
+      "Temperature_Anomaly": [
+        -3.5,
+        3.49
+      ],
+      "Rainfall_Anomaly": [
+        -0.35,
+        0.348
+      ],
+      "pH": [
+        4.83,
+        8.17
+      ],
+      "OrganicCarbon": [
+        0.118,
+        3.862
+      ],
+      "Nitrogen": [
+        50.0,
+        367.90030000000024
+      ],
+      "Phosphorus": [
+        12.64,
+        91.03010000000009
+      ],
+      "Potassium": [
+        71.75,
+        721.9601000000001
+      ],
+      "Sulphur": [
+        1.37,
+        105.45
+      ],
+      "Zinc": [
+        0.068,
+        4.949
+      ],
+      "Copper": [
+        0.08,
+        4.951
+      ],
+      "Boron": [
+        0.061,
+        3.96
+      ],
+      "Iron": [
+        5.96,
+        99.08
+      ],
+      "Manganese": [
+        1.78,
+        79.2
+      ],
+      "EC (Electrical Conductivity)": [
+        0.022,
+        1.188
+      ],
+      "SoilSalinityIndex": [
+        0.011,
+        0.594
+      ],
+      "SoilMoisture": [
+        3.0,
+        10.46
+      ],
+      "SoilPorosity": [
+        32.34,
+        58.23
+      ],
+      "BulkDensity": [
+        1.107,
+        1.793
+      ],
+      "CEC": [
+        5.35,
+        39.66
+      ],
+      "WaterHoldingCapacity": [
+        17.53,
+        78.43
+      ],
+      "NDVI": [
+        0.067,
+        0.731
+      ],
+      "EVI": [
+        0.01,
+        0.558
+      ],
+      "SoilFertilityIndex": [
+        0.103,
+        0.448
+      ],
+      "ErosionRisk": [
+        NaN,
+        NaN
+      ]
+    },
+    "categorical_modes": {
+      "SoilTexture": "Clay Loam",
+      "SoilDepthCategory": "Moderate (30-60cm)"
+    },
+    "feature_names": [
+      "Temperature",
+      "Humidity",
+      "Rainfall",
+      "Temperature_Anomaly",
+      "Rainfall_Anomaly",
+      "pH",
+      "OrganicCarbon",
+      "Nitrogen",
+      "Phosphorus",
+      "Potassium",
+      "Sulphur",
+      "Zinc",
+      "Copper",
+      "Boron",
+      "Iron",
+      "Manganese",
+      "EC (Electrical Conductivity)",
+      "SoilSalinityIndex",
+      "SoilMoisture",
+      "SoilPorosity",
+      "BulkDensity",
+      "CEC",
+      "WaterHoldingCapacity",
+      "NDVI",
+      "EVI",
+      "SoilFertilityIndex",
+      "ErosionRisk",
+      "SoilTexture",
+      "SoilDepthCategory"
+    ]
+  },
+  "config": {
+    "data_path": "expanded_synthetic_crop_dataset_300k.csv",
+    "model_dir": "models",
+    "logs_dir": "logs",
+    "random_seed": 42,
+    "test_size": 0.15,
+    "n_folds": 5,
+    "optimize_hyperparams": true,
+    "optuna_trials": 50,
+    "optuna_timeout_sec": 1800,
+    "use_gpu": true,
+    "gpu_devices": "0",
+    "catboost_iterations": 2500,
+    "catboost_learning_rate": 0.03,
+    "catboost_depth": 9,
+    "catboost_l2_leaf_reg": 8.0,
+    "catboost_random_strength": 2.0,
+    "catboost_rsm": 0.85,
+    "catboost_min_data_in_leaf": 30,
+    "catboost_border_count": 254,
+    "catboost_bootstrap_type": "Bayesian",
+    "catboost_bagging_temperature": 0.6,
+    "catboost_subsample": 0.85,
+    "catboost_early_stopping_rounds": 150,
+    "catboost_eval_metric": "Accuracy",
+    "catboost_log_period": 50,
+    "top_n_recommendations": 3,
+    "min_confidence_threshold": 0.1,
+    "create_ratio_features": true,
+    "log_transform_micronutrients": true,
+    "create_climate_anomalies": true,
+    "max_ph": 14.0,
+    "min_ph": 0.0,
+    "max_rainfall_mm": 5000,
+    "max_temperature_c": 60,
+    "min_temperature_c": -10,
+    "boost_weak_classes": true,
+    "weak_class_names": [
+      "tomato",
+      "maize",
+      "sunflower",
+      "onion"
+    ],
+    "weak_class_boost_factor": 1.5
+  }
+}

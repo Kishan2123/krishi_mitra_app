@@ -1,0 +1,63 @@
+# ================================
+# KrishiMitra.AI Config (Physical + Chemical Crop Model)
+# High-accuracy tuned (CatBoost GPU SAFE)
+# ================================
+
+# ---------- Paths ----------
+data_path: "expanded_synthetic_crop_dataset_300k.csv"
+model_dir: "models"
+logs_dir: "logs"
+
+# ---------- Repro / Split ----------
+random_seed: 42
+test_size: 0.15
+n_folds: 5
+
+# ---------- Hyperparam Optimization ----------
+optimize_hyperparams: true
+optuna_trials: 50
+optuna_timeout_sec: 1800
+
+# ---------- GPU ----------
+use_gpu: true
+gpu_devices: "0"
+
+# ---------- CatBoost BASE params ----------
+catboost_iterations: 2500
+catboost_learning_rate: 0.03
+catboost_depth: 9
+catboost_l2_leaf_reg: 8.0
+catboost_random_strength: 2.0
+catboost_min_data_in_leaf: 30
+catboost_border_count: 254
+catboost_eval_metric: "Accuracy"
+catboost_early_stopping_rounds: 150
+catboost_log_period: 50
+
+# ---- Bootstrap + sampling (GPU compatible rules) ----
+# If Bayesian -> bagging_temperature allowed, subsample OFF
+# If Bernoulli/Poisson/MVS -> subsample allowed, bagging_temperature OFF
+catboost_bootstrap_type: "Bayesian"
+catboost_bagging_temperature: 0.6
+catboost_subsample: 0.85
+
+# ---------- Feature Engineering Switches ----------
+create_ratio_features: true
+log_transform_micronutrients: true
+create_climate_anomalies: true
+
+# ---------- Validation Limits ----------
+max_ph: 14.0
+min_ph: 0.0
+max_rainfall_mm: 5000
+max_temperature_c: 60
+min_temperature_c: -10
+
+# ---------- Weak-class boosting ----------
+boost_weak_classes: true
+weak_class_names:
+  - "tomato"
+  - "maize"
+  - "sunflower"
+  - "onion"
+weak_class_boost_factor: 1.5
